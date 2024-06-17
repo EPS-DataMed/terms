@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+fpdf2
+aiofiles
