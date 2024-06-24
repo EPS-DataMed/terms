@@ -1,9 +1,11 @@
-from fastapi import FastAPI, Form
+from fastapi import FastAPI, Form, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fpdf import FPDF
 import logging
 import os
+import json
+from typing import List
 
 app = FastAPI()
 
@@ -35,10 +37,17 @@ class PDFGenerator(FPDF):
                 self.set_font('Arial', '', 12)
             self.cell(0, 10, line, ln=True)
 
-
 @app.post("/term/generate")
-def generate_terms(project_name: str = Form(...), contact_email: str = Form(...)):
+def generate_terms(
+    project_name: str = Form(...),
+    contact_email: str = Form(...),
+    extra_topics: str = Form(default='[]')  # Passar uma string JSON que será convertida para uma lista de tópicos
+):
     try:
+        extra_topics_list = json.loads(extra_topics)
+        if not isinstance(extra_topics_list, list):
+            raise HTTPException(status_code=400, detail="extra_topics deve ser uma lista de tópicos.")
+
         pdf = PDFGenerator()
         pdf.add_page()
         pdf.chapter_title(f"Projeto: {project_name}")
@@ -192,13 +201,16 @@ por um representante autorizado do {project_name}.
         
         pdf.chapter_body(terms_text.strip())
 
+        for topic in extra_topics_list:
+            pdf.chapter_title(topic.get('title', ''))
+            pdf.chapter_body(topic.get('body', ''))
+
         output_path = f"{project_name}_terms.pdf"
         pdf.output(output_path)
 
         return FileResponse(output_path, media_type='application/pdf', filename=output_path)
     except Exception as e:
         return {"error": str(e)}
-
 
 if __name__ == "__main__":
     import uvicorn
