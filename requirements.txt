@@ -2,3 +2,5 @@ fastapi
 uvicorn
 fpdf2
 aiofiles
+pytest
+pytest-cov
