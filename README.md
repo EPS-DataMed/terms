@@ -1,6 +1,8 @@
 
 # Terms Generator
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=EPS-DataMed_terms&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=EPS-DataMed_terms) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=EPS-DataMed_terms&metric=coverage)](https://sonarcloud.io/summary/new_code?id=EPS-DataMed_terms) [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=EPS-DataMed_terms&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=EPS-DataMed_terms)
+
 Este projeto é uma API construída com FastAPI para gerar arquivos PDF contendo termos de uso personalizados. A API permite que você forneça o nome do projeto e o email de contato, e então gera um PDF com termos de uso pré-definidos.
 
 ## Estrutura do Projeto
