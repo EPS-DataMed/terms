@@ -205,7 +205,7 @@ por um representante autorizado do {project_name}.
             pdf.chapter_title(topic.get('title', ''))
             pdf.chapter_body(topic.get('body', ''))
 
-        output_path = f"{project_name}_terms.pdf"
+        output_path = f"terms.pdf"
         pdf.output(output_path)
 
         return FileResponse(output_path, media_type='application/pdf', filename=output_path)
