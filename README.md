@@ -1,60 +1,79 @@
 
 # Terms Generator
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=EPS-DataMed_terms&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=EPS-DataMed_terms) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=EPS-DataMed_terms&metric=coverage)](https://sonarcloud.io/summary/new_code?id=EPS-DataMed_terms) [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=EPS-DataMed_terms&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=EPS-DataMed_terms)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=EPS-DataMed_terms&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=EPS-DataMed_terms)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=EPS-DataMed_terms&metric=coverage)](https://sonarcloud.io/summary/new_code?id=EPS-DataMed_terms)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=EPS-DataMed_terms&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=EPS-DataMed_terms)
+
+## Descrição do Projeto
 
 Este projeto é uma API construída com FastAPI para gerar arquivos PDF contendo termos de uso personalizados. A API permite que você forneça o nome do projeto e o email de contato, e então gera um PDF com termos de uso pré-definidos.
 
-## Estrutura do Projeto
-
-- `.gitignore`: Arquivo para ignorar arquivos e pastas que não devem ser versionados.
-- `main.py`: Script principal que contém a implementação da API.
-- `README.md`: Este arquivo que você está lendo, que fornece uma visão geral do projeto.
-- `requirements.txt`: Arquivo que lista as dependências do projeto.
-
-## Como Executar
+## Configuração do ambiente de desenvolvimento local
 
 ### Pré-requisitos
 
-- Python 3.7 ou superior
-- pip3 (gerenciador de pacotes do Python)
+- Python 3.11 ou superior
+- `venv` para gerenciamento de ambientes virtuais
+- Dependências listadas em `requirements.txt`
 
-### Instalação
+Siga os passos abaixo para configurar o ambiente de desenvolvimento local:
 
-1. Clone o repositório para sua máquina local:
-
-   ```bash
-   git clone https://github.com/seu_usuario/seu_repositorio.git
-   ```
-
-2. Navegue até o diretório do projeto:
+1. **Clone o repositório**
 
    ```bash
-   cd seu_repositorio
+   git clone <URL_DO_REPOSITORIO>
+   cd terms
    ```
 
-3. Crie um ambiente virtual e ative-o:
+2. **Crie e ative um ambiente virtual**
 
    ```bash
    python -m venv venv
-   source venv/bin/activate  # No Windows use `venv\Scripts\activate`
+   source venv/bin/activate   # No Windows, use `venv\Scripts\activate`
    ```
 
-4. Instale as dependências:
+3. **Instale as dependências**
 
    ```bash
-   pip3 install -r requirements.txt
+   pip install --upgrade pip
+   pip install -r requirements.txt 
    ```
 
-### Executando a API
-
-1. Inicie o servidor FastAPI usando Uvicorn:
+4. **Execute a aplicação**
 
    ```bash
-   uvicorn main:app --reload
+   uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
    ```
 
-2. Acesse a documentação interativa da API em [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+   A aplicação estará disponível em `http://127.0.0.1:8000`.
+
+### Testes
+
+1. Para executar os testes, utilize o comando abaixo:
+
+    ```bash
+    pytest
+    ```
+
+## Configuração do ambiente de desenvolvimento com Docker
+
+### Pré-requisitos
+
+- Docker
+- Docker Compose
+
+1. **Construir a imagem Docker**
+    ```bash
+    docker-compose build
+    ```
+
+2. **Executar o container**
+    ```bash
+    docker-compose up
+    ```
+
+A aplicação estará disponível em `http://127.0.0.1:8000`.
 
 ## Endpoints
 
@@ -73,4 +92,4 @@ Gera um arquivo PDF contendo os termos de uso.
 
 ## Licença
 
-Este projeto está licenciado sob os termos da licença MIT.
+Este projeto está licenciado sob a [MIT License](./LICENSE).

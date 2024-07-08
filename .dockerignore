@@ -1,6 +1,21 @@
-__pycache__
+# Ignore the following files and directories
 .git
-.pytest_cache
-.coverage
+.github
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.DS_Store
+*.log
+*.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env*.local
 .vscode
-venv
+.idea
+node_modules
+tests
