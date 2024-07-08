@@ -40,11 +40,7 @@ Siga os passos abaixo para configurar o ambiente de desenvolvimento local:
    pip install -r requirements.txt 
    ```
 
-4. **Configure as variáveis de ambiente**
-
-   Crie um arquivo `.env` na raiz do projeto e copie o conteúdo do arquivo `.env.example`, ajustando os valores conforme necessário.
-
-5. **Execute a aplicação**
+4. **Execute a aplicação**
 
    ```bash
    uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
@@ -67,16 +63,12 @@ Siga os passos abaixo para configurar o ambiente de desenvolvimento local:
 - Docker
 - Docker Compose
 
-1. **Configure as variáveis de ambiente (caso ainda não tenha configurado)**
-
-   Crie um arquivo `.env` na raiz do projeto e copie o conteúdo do arquivo `.env.example`, ajustando os valores conforme necessário.
-
-2. **Construir a imagem Docker**
+1. **Construir a imagem Docker**
     ```bash
     docker-compose build
     ```
 
-3. **Executar o container**
+2. **Executar o container**
     ```bash
     docker-compose up
     ```
